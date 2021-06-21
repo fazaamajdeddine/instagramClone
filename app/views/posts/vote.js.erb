@@ -1,0 +1,11 @@
+<% if current_user.liked? @post %>
+    $(".like-button-<%= @post.id %> .fas").addClass("liked");
+<% else %>
+    $(".like-button-<%= @post.id %> .fas").removeClass("liked");
+<% end %>
+
+$(".likes-count").html(" <%= @post.get_upvotes.size%> ")
+
+
+
+

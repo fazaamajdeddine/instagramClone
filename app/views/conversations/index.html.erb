@@ -1,0 +1,63 @@
+<div class="container mx-auto shadow-lg rounded-lg">
+    <div class="px-5 py-5 flex justify-between items-center bg-white border-b-2">
+      <div class="font-semibold text-2xl">My Inbox</div>
+            <div class="w-1/2">
+               <%= current_user.username%> 
+            </div>
+        </div>    
+    </div>
+    <div class="flex flex-row justify-between bg-white">
+        <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto">
+            <div class="border-b-2 py-4 px-2">
+                <% @conversations.each do |conversation| %>
+            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                <% if conversation.sender_id == current_user.id %>
+                    <% recipient = User.find(conversation.recipient_id) %>
+                <% else %>
+                    <% recipient = User.find(conversation.sender_id) %>
+                <% end %>
+                <h3 class="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full"><%= link_to recipient.username, conversation_messages_path(conversation)%></h3>
+                <% end %>
+                <% end %>
+                 <div class="flex flex-row py-4 px-2 justify-center items-center border-b-2">
+                    <h2>my friends</h2>
+                </div>
+                <% @users.each do |user| %>
+                    <% if user.id != current_user.id %>
+                    <div class="w-1/4">
+                        <h3>
+                        <%= link_to user.username, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+                        </h3>
+                    </div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!--<% @conversations.each do |conversation| %>
+            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+                <% if conversation.sender_id == current_user.id %>
+                    <% recipient = User.find(conversation.recipient_id) %>
+                <% else %>
+                    <% recipient = User.find(conversation.sender_id) %>
+                <% end %>
+                <h3><%= link_to recipient.username, conversation_messages_path(conversation)%></h3>
+                <% end %>
+                <% end %>
+            <h2>my friends</h2>
+                <% @users.each do |user| %>
+                    <% if user.id != current_user.id %>
+                        <h3>
+                        <%= link_to user.username,
+                        conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
+                        </h3>
+                    <% end %>
+                <% end %>-->
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<% if users.present? %>
+  <% users.each do |user| %>
+    <%= link_to profile_path(user.username) do %>
+      <div class="search-result-item"><%= user.username %></div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div >
+    No results found.
+  </div>
+<% end %>  

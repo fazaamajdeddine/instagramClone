@@ -1,0 +1,9 @@
+<% post.comments.each do |comment| %>
+    <div>
+        <%= comment.user.username %>
+        <%= comment.body %><br>
+        <span class="text-xs text-gray-400">
+			<%= time_ago_in_words comment.created_at%> ago
+		</span>
+    </div>
+<% end %>

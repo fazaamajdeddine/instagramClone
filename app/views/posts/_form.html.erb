@@ -1,0 +1,58 @@
+<div class="min-h-screen min-w-screen flex items-center justify-center bg-gray-100">
+  <div class="flex flex-col shadow-xl">
+    <div class="post-background py-6 px-14 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
+      <h2 class=" title-new text-black text-xs uppercase">upload your post today</h2>
+      <h4 class="text-black text-center font-bold text-xl">
+        make trace to your life <br />
+        and upload some souvenirs
+      </h4>
+    </div>
+    <div class="flex flex-col py-6 px-8 space-y-5 bg-white">
+    <%= form_with(model: @post)  do |f|%>
+ 
+    <p>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+    </p>
+
+    <p >
+    <%=f.label :caption %><br>
+    <p>
+    <%=f.text_area :caption, class:"px-2 py-2 border-2 rounded-md border-gray-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent" %>
+    </p>
+    </p>
+    <div class="buttons flex">
+    <%= f.submit "Post", class:"btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500"%><br>
+    <%= link_to "Back", :back, class:"btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto" %>
+    </div>
+    <% end %>
+   </div> 
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--<%= form_with(model: @post)  do |f|%>
+
+
+<p>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+</p>
+
+
+<p>
+    <%=f.label :caption %><br>
+    <%=f.text_area :caption %>
+</p>
+
+    <%= f.submit %></button>
+
+<% end %>-->
+

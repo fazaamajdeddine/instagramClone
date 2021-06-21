@@ -1,0 +1,57 @@
+<div class="bg-grey-lighter min-h-screen flex flex-col">
+            <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                    <%= image_tag "logo.png", width: "250px", class: "h-15 mx-10 mb-8 text-center" %> 
+                    <h2 class="font-thin text-center">sign up and see photos from your friends </h2>
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                    <%= render "devise/shared/error_messages", resource: resource %>
+
+                    <%= f.label :username %><br />
+                    <p> 
+                      <%= f.text_field :username, class:"block border border-grey-light w-full p-3 rounded mb-4", placeholder:"Username..."%>
+                    </p>
+                    
+                    <%= f.label :first_name %><br />
+                    <p> 
+                      <%= f.text_field :first_name, class:"block border border-grey-light w-full p-3 rounded mb-4", placeholder:"First name" %> 
+                    </p>
+                    
+                    <%= f.label :last_name %><br />
+                    <p> 
+                      <%= f.text_field :last_name, class:"block border border-grey-light w-full p-3 rounded mb-4", placeholder:"Last name" %>
+                    </p>
+                    
+                    <%= f.label :email %><br />
+                    <p> 
+                      <%= f.email_field :email, autocomplete: "email", class:"block border border-grey-light w-full p-3 rounded mb-4", placeholder:"Email"%>
+                    </p>
+                    
+                    <%= f.label :password %>
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                     <% end %><br />
+                    <p >
+                      <%= f.password_field :password, autocomplete: "new-password", class:"block border border-grey-light w-full p-3 rounded mb-4", placeholder:"Password" %>
+                    </p>
+                        
+                    <%= f.label :password_confirmation %><br />
+                    <p> 
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"block border border-grey-light w-full p-3 rounded mb-4", placeholder:"confirm Password" %>
+                    </p>
+                    <button type="submit"
+                          class="w-full text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
+                    > <%= f.submit "Sign up", class: "w-full py-3 mt-10 bg-blue-500 rounded-sm
+                      font-medium text-white uppercase"%>
+                    </button>
+
+                    
+                  
+                </div>
+                <% end %>
+                <%= render "devise/shared/links" %>
+            </div>
+        </div>
+
+
+
+  

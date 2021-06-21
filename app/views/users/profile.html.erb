@@ -1,0 +1,92 @@
+<main class="bg-gray-100 bg-opacity-25">
+    <div class="lg:w-8/12 lg:mx-auto mb-8">
+        <header class="flex flex-wrap items-center p-4 md:py-8">
+            <div class="md:w-3/12 md:ml-16">
+                
+            </div>
+            <div class="w-8/12 md:w-7/12 ml-4">
+                <div class="md:flex md:flex-wrap md:items-center mb-4">
+                    <h2 class="text-3xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
+                        <%= @user.full_name %>
+                    </h2>
+                    <% if user_signed_in? && @user == current_user %>
+                    <div class="edit-button bg-gray-500 px-2 py-1 text-white font-semibold text-sm rounded block text-center sm:inline-block block">
+                        <%= link_to"Edit Profile", edit_user_registration_path(@user) %>
+                    </div>
+                    <% elsif current_user.following.include?(@user) %>
+                    <div class=" edit-button bg-gray-100 px-2 py-1 text-black font-semibold text-sm rounded block text-center sm:inline-block block">
+                        <%= button_to"Unfollow", follows_path(user_id: @user.id), method: :delete %>
+                    </div>
+                    <% else %>
+                    <div class="bg-blue-500 px-2 py-1 text-white font-semibold text-sm rounded block text-center sm:inline-block block">
+                        <%= button_to"Follow", follows_path(user_id: @user.id) %>
+                    </div>
+                    <% end %>
+                </div>
+                    <!-- post, following, followers list for medium screens -->
+                    <ul class="hidden md:flex space-x-8 mb-4">
+                        <li>
+                            <span class="font-semibold"><%= @user.posts.count %></span>
+                            posts
+                        </li>
+
+                        <li>
+                            <span class="font-semibold"><%= @user.followers.count %></span>
+                            followers
+                        </li>
+                        <li>
+                            <span class="font-semibold"><%= @user.following.count %></span>
+                            following
+                        </li>
+                    </ul>
+                    <!-- user info form medium screens -->
+                    <div class="hidden md:block">
+                        <h1 class="font-semibold"><%= @user.full_name %></h1>
+                    </div>
+            </div>
+                <!-- user info form small screens -->
+                    <div class="md:hidden text-sm my-2">
+                        <h1 class="font-semibold"><%= @user.full_name %></h1>
+                    </div>
+        </header>
+         <!-- posts -->
+        <div class="px-px md:px-3">
+            <!-- post, following, followers list for medium screens  -->
+            <ul class="flex md:hidden justify-around space-x-8 border-t text-center p-2 text-gray-600 leading-snug text-sm">
+                <li>
+                <span class="font-semibold text-gray-800 block"><%= @user.posts.count %></span>
+                posts
+                </li>
+
+                <li>
+                <span class="font-semibold text-gray-800 block"><%= @user.followers.count %></span>
+                followers
+                </li>
+                <li>
+                <span class="font-semibold text-gray-800 block"><%= @user.following.count %></span>
+                following
+                </li>
+            </ul>
+            <!--posts images-->
+            
+            <div class="flex grid grid-cols-3 gap-4 mt-6">
+                <% @posts.each do |post|%>
+                <div div class="post bg-gray-100 text-white relative pb-full md:mb-6 ">
+                    <%= link_to image_tag(post.image), post_path(post), class: "h-full w-full" %>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</main>
+  
+    
+    
+  
+
+
+
+
+
+
+

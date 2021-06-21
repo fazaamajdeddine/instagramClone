@@ -1,0 +1,30 @@
+          
+
+<% @messages.each do |message| %>
+<div class="flex mx-52 justify-center mb-4 mt-6">
+  
+    <% if message.body %>
+    <% user = User.find(message.user_id) %>
+    <div class="mr-2 py-3 px-4 bg-pink-200 rounded text-black justify-center ">
+            <strong><%= user.username %> </strong><%= message.message_time %>
+                <div >
+                    <%= message.body %>
+                </div>
+
+        <% end %>
+    </div>
+</div>
+<% end %>
+
+
+<div class="flex mx-52 justify-center mb-4"  >
+    <%= form_for [@conversation, @message] do |f| %>
+        <div >
+            <%= f.text_area :body %>
+        </div>
+            <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+        <div>
+            <%= f.submit "Send Reply" %>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,75 @@
+<body class="font-mono bg-gray-400">
+		<!-- Container -->
+		<div class="container mx-auto">
+			<div class="flex justify-center px-6 my-12">
+				<!-- Row -->
+				<div class="w-full xl:w-3/4 lg:w-11/12 flex">
+					<!-- Col -->
+					<div
+						class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
+						style="background-image: url('https://i2.wp.com/www.mobileworldlive.com/wp-content/uploads/2016/08/Instagram-stories-rs-1.jpg?fit=500%2C484&ssl=1')"
+					></div>
+          <!-- Col -->
+					<div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+						<h3 class="pt-4 text-2xl text-center"><%= image_tag "logo.png", width: "150px", class: "p-4" %></h3>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                
+                <%= f.label :email %><br />
+                <p  class="block w-full py-3 px-1 mt-2 
+                    text-gray-800 appearance-none 
+                    border-b-2 border-gray-100
+                    focus:text-gray-500 focus:outline-none focus:border-gray-200"
+                    required>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-full bg-gray-200 rounded" %>
+                </p>  
+                     
+
+                
+                <%= f.label :password %><br />
+                <p class="block w-full py-3 px-1 mt-2 mb-4
+                    text-gray-800 appearance-none 
+                    border-b-2 border-gray-100
+                    focus:text-gray-500 focus:outline-none focus:border-gray-200"
+                    required >
+                  <%= f.password_field :password, autocomplete: "current-password", class:"w-full bg-gray-200 rounded" %>
+                </p>
+                <% if devise_mapping.rememberable? %>
+                <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+                </div>
+                <% end %>
+                    
+
+                <div class="flex mt-7 justify-center w-full">
+                  <button >
+                    <%= f.submit "Log in", class:"mr-5 bg-blue-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105"%>
+                  </button>
+                  <button >
+                    <%= link_to "sign up", new_user_registration_path, class:"mr-5 bg-blue-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105"%>
+                  </button>
+                </div>
+                
+                <div class="sm:flex sm:flex-wrap mt-8 sm:mb-4 text-sm text-center">
+                    <a href="forgot-password" class="flex-2 underline">
+                        <%= render "devise/shared/links" %>
+                    </a>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
