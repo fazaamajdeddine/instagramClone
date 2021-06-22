@@ -1,24 +1,30 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
-    
-    
 
-    def create 
-        @comment = Comment.new(comment_params)
-        @comment.user_id = current_user.id if user_signed_in?
-        @comment.save 
-          
-         
+    def index
+      @comments = @post.comments.includes(:user)
     end
-
-    def destroy 
-        @comment.destroy
-        
+  
+    def create
+      @comment = Comment.new(comment_params)
+      if @comment.save
+        @post = @comment.post
+        respond_to :js
+      else
+        flash[:alert] = "Something went wrong ..."
+      end
     end
-
-    
-
-
+  
+    def destroy
+      @comment = Comment.find(params[:id])
+      @post = @comment.post
+      if @comment.destroy
+        respond_to :js
+      else
+        flash[:alert] = "Something went wrong ..."
+      end
+    end
+  
     private
 
     def comment_params

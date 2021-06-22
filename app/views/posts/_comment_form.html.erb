@@ -1,0 +1,6 @@
+<%= form_for [post, Comment.new], remote: true  do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :post_id, value: post.id %>
+    <%= f.text_field :body, placeholder: "add comment here ...", autocomplete: :off %>
+    <%= f.submit "Post", class: "comment-button text-blue-500 opacity-75 w-2/12 text-center font-bold" %>
+<% end %>

@@ -16,13 +16,13 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :posts do 
-    resources :comments 
+  resources :posts do
+    resources :comments
   end
   
    
   resource :follows, only: [:create, :destroy]
-  resource :comments, only: [:create]
+  resources :comments, only: [:index, :create, :destroy], shallow: true
    
 resources :posts do 
   member do 

@@ -34,16 +34,12 @@
                 <p>
                     <%= post.caption%>
                 </p>
-                <div id="comment_pane" class=" comment-box " >
-                    <%= render "posts/comments", post: post %>
+                <div id="comment-post-<%= post.id.to_s %>" class=" comment-box " >
+                    <%= render 'comment_list', {post: post} %>
                 </div>
             </div>
-            <div class="bottom border-t pt-3 mt-3">
-                <%= form_for Comment.new do |f| %>
-                <%= f.hidden_field :post_id, value: post.id %>
-                <%= f.text_field :body, placeholder: "add comment here ..." %>
-                <%= f.submit "Post", class: "comment-button text-blue-500 opacity-75 w-2/12 text-center font-bold" %>
-            <% end %>                
+            <div class="bottom border-t pt-3 mt-3"  id="comment-form-post-<%= post.id.to_s %>">
+                <%= render 'comment_form', {post: post} %>                
             </div>
 
         </div>    

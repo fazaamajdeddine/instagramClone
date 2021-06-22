@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def index
      
     if logger
-    @comments = Comment.new
+    @comment = Comment.new
     #@comment = @post.comments.find(params[:id])
     @users = User.where(id: params[:user_id])
     @posts = Post.all.order("created_at DESC")
