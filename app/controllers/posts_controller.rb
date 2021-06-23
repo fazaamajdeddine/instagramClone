@@ -54,7 +54,9 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to root_path 
+    respond_to do |format|
+      format.js { render 'update', layout: false }
+    end 
   end
 
   def vote 
