@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  
+  has_one_attached :avatar
   has_many :posts 
   validates :username, presence: true 
   has_many :comments, dependent: :destroy
@@ -44,4 +44,6 @@ def self.search(term)
     nil
   end
 end
+
+
 end

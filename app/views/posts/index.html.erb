@@ -1,7 +1,7 @@
 <div class="bg-gray-100 p-4">
  <% if user_signed_in? %>
     <% @posts.each do |post| %>
-    <div class="posts-show">
+    <div id="posts-show">
         <div class=" relative py-3 sm:max-w-xl sm:mx-auto">
             <div class="bg-white border rounded-sm max-w-md">
                 <div class="flex items-center px-4 py-3 w-full">
@@ -54,7 +54,11 @@
     <% end %>
 
     <% end %>
+    <div class="digg_pagination  ">
+        <%= will_paginate @posts %>
+    </div>
 </div>
+
     
     
    

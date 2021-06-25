@@ -1,8 +1,7 @@
-<main class="bg-gray-100 bg-opacity-25">
+<main class="bg-gray-300 bg-opacity-25">
     <div class="lg:w-8/12 lg:mx-auto mb-8">
         <header class="flex flex-wrap items-center p-4 md:py-8">
             <div class="md:w-3/12 md:ml-16">
-                
             </div>
             <div class="w-8/12 md:w-7/12 ml-4">
                 <div class="md:flex md:flex-wrap md:items-center mb-4">
@@ -71,8 +70,8 @@
             
             <div class="flex grid grid-cols-3 gap-4 mt-6">
                 <% @posts.each do |post|%>
-                <div div class="post bg-gray-100 text-white relative pb-full md:mb-6 ">
-                    <%= link_to image_tag(post.image), post_path(post), class: "h-full w-full" %>
+                <div div class="post bg-transparent text-white relative pb-full md:mb-6 ">
+                    <%= link_to image_tag(post.profile_thumbnail), post_path(post), class: "h-full w-full" %>
                 </div>
                 <% end %>
             </div>

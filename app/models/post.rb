@@ -5,7 +5,11 @@ class Post < ApplicationRecord
     acts_as_votable
     
 def thumbnail 
-    return self.image.variant(resize: '500x500')
+    return self.image.variant(resize: '500x500!').processed
+end
+
+def profile_thumbnail
+    return self.image.variant(resize: '350x350!').processed
 end
     
     

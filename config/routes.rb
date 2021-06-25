@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   
-   
+  #resources :posts, only: [:new, :create, :show, :destroy], shallow: true 
   resource :follows, only: [:create, :destroy]
   resources :comments, only: [:index, :create, :destroy], shallow: true
    

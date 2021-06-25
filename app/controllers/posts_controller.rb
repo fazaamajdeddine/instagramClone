@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     #@comment = @post.comments.find(params[:id])
     @users = User.where(id: params[:user_id])
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order("created_at DESC").paginate(page: params[:page], per_page: 10)
     else
     @posts = Post.posts_of_followings(current_user.following)
     
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.js { render 'update', layout: false }
+      format.js
     end 
   end
 
