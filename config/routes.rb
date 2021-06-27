@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   devise_for :users
   #get "posts#new"
   #post "posts/new", to: "posts#create"
@@ -35,5 +36,5 @@ end
   resources :users
   #get "search", to: "users#index"
   #get '/search' => 'users#search', :as => 'search_page'
-
+  get 'search' => 'search#index'
 end

@@ -12,10 +12,9 @@
     </div>
     <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row p-3">
         <div class="relative hidden sm:block text-gray-500">
-          <%= form_tag users_path, method: :get,  id: "users-search", remote: true do %>
-          <%= text_field_tag :term, params[:term], placeholder: "Search", autocomplete: :off, class:"search-bar max-w-xs border rounded bg-gray-200 px-4 text-center outline-none focus:border-gray-400", type:"search", required: true %>
+          <%= form_with url: search_path, method: :get, local: true do |form| %>
+          <%= form.text_field :query, value: params[:query], placeholder: "Search", autocomplete: :off, class:"search-bar max-w-xs border rounded bg-gray-200 px-4 text-center outline-none focus:border-gray-400", type:"search", required: true %>
           <i class="fa fa-search absolute top-0 left-0 ml-12 mt-1"></i>
-          <div id="users-result"></div>
           <% end %>
         </div>  
       <a> <%= link_to"Home", authenticated_root_path, class:"px-4 py-2 mt-2 text-sm font-semibold  bg-transparent rounded-lg dark-mode:bg-gray-700   dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" %></a>

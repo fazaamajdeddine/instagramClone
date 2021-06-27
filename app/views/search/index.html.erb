@@ -1,0 +1,20 @@
+<div class="bg-gray-100 p-4 ">
+    
+    <div class="bg-white border rounded-sm max-w-md">
+        <div class="search-page">
+        <% if @posts.exists? %>
+            <h1>Top Posts</h1>
+        <% else %>
+            <h1>Oop! No matching posts ...</h1>
+        <% end %>
+        <div class="items center">
+            <% @posts.each do |post|%>
+            <div class="flex items-center px-4 py-3">
+                <%= link_to image_tag(post.image,style: "width: 500px; display:block", class: "overflow-hidden"), post_path(post.id)  %>
+            </div>
+            <% end %>
+        </div>
+        </div>
+    </div>
+</div>
+

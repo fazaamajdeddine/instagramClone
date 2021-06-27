@@ -7,7 +7,7 @@
                 </div>
                     <p>
                         <% if @post.image.attached? %>
-                            <%=  image_tag(@post.image,style: "width: 500px; display:block", class: "overflow-hidden") %>
+                            <%=  link_to image_tag(@post.thumbnail, class: "overflow-hidden") %>
                         <% end %>                        
                     </p>
                     <div class="flex items-center justify-between mx-4 mt-3 mb-2">
@@ -26,7 +26,13 @@
         
         <div class="font-semibold text-sm mx-4 mt-2 mb-4">
             <p>
-                <%= @post.caption%>
+                <% @post.caption.to_s.split(' ').each do |word| %>
+                    <% if word.start_with?('#') %>
+                        <%= link_to word, search_path(query: word) %>
+                    <%else %>
+                        <%= word %>
+                    <%end %>
+                <% end %>
             </p>
             <div id="comment-post-<%= @post.id.to_s %>" class="comment-box">
                 <%= render 'comment_list', {post: @post}  %>

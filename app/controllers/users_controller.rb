@@ -34,7 +34,7 @@ before_action :set_users, only: [:profile]
 
   
   def user_params
-    params.require(:user).permit(:username, :description, :password, :image, :website)
+    params.require(:user).permit(:username, :password, :avatar)
   end
 
   

@@ -5,7 +5,15 @@
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-
+        <div>
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar, class: 'avatar' %>
+          <%end %>
+        </div>  
+        <div class="field">
+          <%= f.label :avatar%>
+          <%= f.file_field :avatar %>
+        </div>
 
         <div class="field">
           <%= f.label :username %><br />
@@ -21,11 +29,6 @@
           <%= f.label :last_name %><br />
           <%= f.text_field :last_name, class:"block border border-grey-light w-full p-3 rounded mb-4", placeholder:"Last name" %>
         </div>
-
-
-
-
-
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>

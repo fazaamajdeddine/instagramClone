@@ -5,7 +5,11 @@
         <div class=" relative py-3 sm:max-w-xl sm:mx-auto">
             <div class="bg-white border rounded-sm max-w-md">
                 <div class="flex items-center px-4 py-3 w-full">
-                    <%= link_to image_tag(current_user.image), profile_path(current_user.username) if current_user.image.present?  %>
+                    <% if post.user.avatar.attached? %>
+                    <%= link_to profile_path(post.user.avatar) do %>
+                    <%= image_tag post.user.avatar %>
+                    <% end %>
+                    <% end %>
                     <strong><%= link_to post.user.username, profile_path(post.user.username) %></strong>
                 </div>
                     <div class="post-date mt-1">
@@ -38,7 +42,13 @@
                     </div>
                 <div class="font-semibold text-sm mx-4 mt-2 mb-4">
                     <p class ="caption-text">
-                        <%= post.caption%>
+                        <% post.caption.to_s.split(' ').each do |word| %>
+                            <% if word.start_with?('#') %>
+                                <%= link_to word, search_path(query: word) %>
+                            <%else %>
+                                <%= word %>
+                            <%end %>
+                        <% end %>
                     </p>
                     <div id="comment-post-<%= post.id.to_s %>" class=" comment-box border-t pt-3 mt-3 " >
                         <%= render 'comment_list', {post: post} %>

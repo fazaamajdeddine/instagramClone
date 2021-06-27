@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
     def create
         @message = @conversation.messages.new(message_params)
         if @message.save
-          redirect_to root_path
+          redirect_to authenticated_root_path
         end
     end
 
