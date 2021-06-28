@@ -44,6 +44,14 @@ def self.search(term)
     nil
   end
 end
+def avatar_thumbnail 
+  if avatar.attached?
+    avatar.variant(resize:"150X150!").processed 
+  else 
+    "avatar.png"
+  end
+end
+
 
 
 end

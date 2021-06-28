@@ -2,6 +2,9 @@
     <div class="lg:w-8/12 lg:mx-auto mb-8">
         <header class="flex flex-wrap items-center p-4 md:py-8">
             <div class="md:w-3/12 md:ml-16">
+            <% if @user.avatar.attached? %>
+                <%= image_tag(@user.avatar_thumbnail,class:"rounded-full h-50 w-50 items-center justify-center")  %>
+            <% end %>
             </div>
             <div class="w-8/12 md:w-7/12 ml-4">
                 <div class="md:flex md:flex-wrap md:items-center mb-4">
