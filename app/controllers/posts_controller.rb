@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    if @post.update(params.require(:post).permit( :caption, :user_id))
       redirect_to @post, notice: "post was updated!"
     else
       render "edit"
@@ -74,7 +74,7 @@ class PostsController < ApplicationController
   end 
 
   def post_params
-    params.require(:post).permit( :caption, :user_id)
+    params.require(:post).permit(:image, :caption, :user_id)
   end
 
   def find_post

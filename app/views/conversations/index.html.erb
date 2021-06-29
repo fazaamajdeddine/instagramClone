@@ -16,7 +16,7 @@
                 <% else %>
                     <% recipient = User.find(conversation.sender_id) %>
                 <% end %>
-                <h3 class="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full"><%= link_to recipient.username, conversation_messages_path(conversation)%></h3>
+                <h3 class="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full hover:bg-blue-100"><%= link_to recipient.username, conversation_messages_path(conversation)%></h3>
                 <% end %>
                 <% end %>
                  <div class="flex flex-row py-4 px-2 justify-center items-center border-b-2">
@@ -36,25 +36,8 @@
     </div>
 </div>
 
-            <!--<% @conversations.each do |conversation| %>
-            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-                <% if conversation.sender_id == current_user.id %>
-                    <% recipient = User.find(conversation.recipient_id) %>
-                <% else %>
-                    <% recipient = User.find(conversation.sender_id) %>
-                <% end %>
-                <h3><%= link_to recipient.username, conversation_messages_path(conversation)%></h3>
-                <% end %>
-                <% end %>
-            <h2>my friends</h2>
-                <% @users.each do |user| %>
-                    <% if user.id != current_user.id %>
-                        <h3>
-                        <%= link_to user.username,
-                        conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%>
-                        </h3>
-                    <% end %>
-                <% end %>-->
+
+           
 
 
 

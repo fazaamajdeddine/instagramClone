@@ -3,7 +3,7 @@
         <header class="flex flex-wrap items-center p-4 md:py-8">
             <div class="md:w-3/12 md:ml-16">
             <% if @user.avatar.attached? %>
-                <%= image_tag(@user.avatar_thumbnail,class:"rounded-full h-50 w-50 items-center justify-center")  %>
+                <%= image_tag(@user.avatar_thumbnail, class:"rounded-full h-50 w-50 items-center justify-center") %>
             <% end %>
             </div>
             <div class="w-8/12 md:w-7/12 ml-4">
@@ -16,12 +16,12 @@
                         <%= link_to"Edit Profile", edit_user_registration_path(@user) %>
                     </div>
                     <% elsif current_user.following.include?(@user) %>
-                    <div class=" edit-button bg-gray-100 px-2 py-1 text-black font-semibold text-sm rounded block text-center sm:inline-block block">
-                        <%= button_to"Unfollow", follows_path(user_id: @user.id), method: :delete %>
+                    <div class="bg-gray-100 px-2 py-1 text-black font-semibold text-sm rounded block text-center sm:inline-block block">
+                        <%= button_to"Unfollow", follows_path(user_id: @user.id),class:"mr-5 bg-gray-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105", method: :delete, local: true %>
                     </div>
                     <% else %>
                     <div class="bg-blue-500 px-2 py-1 text-white font-semibold text-sm rounded block text-center sm:inline-block block">
-                        <%= button_to"Follow", follows_path(user_id: @user.id) %>
+                        <%= button_to"Follow", follows_path(user_id: @user.id), class:"mr-5 bg-blue-500 border-none px-2 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105", local: true %>
                     </div>
                     <% end %>
                 </div>

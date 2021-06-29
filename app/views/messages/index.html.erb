@@ -20,11 +20,11 @@
 <div class="flex mx-52 justify-center mb-4"  >
     <%= form_for [@conversation, @message] do |f| %>
         <div >
-            <%= f.text_area :body %>
+            <%= f.text_area :body,class:"description bg-gray-100 sec p-3 h-10 border border-gray-300 outline-none"  %>
         </div>
-            <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+            <%= f.text_field :user_id, value: current_user.id, type: "hidden"%>
         <div>
-            <%= f.submit "Send Reply" %>
+            <%= f.submit "Send Reply", class:"btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500"%>
         </div>
     <% end %>
 </div>

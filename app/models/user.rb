@@ -44,6 +44,9 @@ def self.search(term)
     nil
   end
 end
+
+after_commit :add_avatar, on: %i[create update]
+
 def avatar_thumbnail 
   if avatar.attached?
     avatar.variant(resize:"150X150!").processed 
@@ -52,6 +55,18 @@ def avatar_thumbnail
   end
 end
 
-
-
+private 
+def add_avatar 
+  unless avatar.attached? 
+    avatar.attach(
+      io: File.open(
+        Rails.root.join(
+          'app', 'assets', 'images', 'avatar.png'
+        )
+      ), 
+      filename: 'avatar.png',
+      content_type: 'image/png'
+    )
+  end
+end
 end

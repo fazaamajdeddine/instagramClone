@@ -1,6 +1,6 @@
 <div class="min-h-screen min-w-screen flex items-center justify-center bg-gray-100">
   <div class="flex flex-col shadow-xl">
-    <div class="post-background py-6 px-14 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
+    <div class="py-6 px-14 rounded-tl-2xl rounded-tr-2xl text-center space-y-8">
       <h2 class=" title-new text-black text-xs uppercase">upload your post today</h2>
       <h4 class="text-black text-center font-bold text-xl">
         make trace to your life <br />
@@ -17,10 +17,11 @@
 
     <p >
     <%=f.label :caption %><br>
-    <p>
-    <%=f.text_area :caption, class:"px-2 py-2 border-2 rounded-md border-gray-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-transparent" %>
+    <p class="editor mx-auto w-10/12 flex flex-col text-gray-800 max-w-2xl w-full">
+    <%=f.text_area :caption, class:"description bg-gray-100 sec p-3 h-30  border border-gray-300 outline-none", placeholder:"Describe everything about this post here" %>
     </p>
     </p>
+    
     <div class="buttons flex">
     <%= f.submit "Post", class:"btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500"%><br>
     <%= link_to "Back", :back, class:"btn border border-gray-300 p-1 px-4 font-semibold cursor-pointer text-gray-500 ml-auto" %>

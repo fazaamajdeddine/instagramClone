@@ -63,11 +63,7 @@
   }
 }
 
-.post-background{
-  background-image: url(new-post.jpg) ;
-  background-size: contain;
-  opacity: 0.5;
-}
+
 
 
 .post-actions{
@@ -139,6 +135,12 @@
   cursor: default;
   text-align: center;
 
+  
+}
+
+
+.search-items{
+  text-align: center;
   
 }
 

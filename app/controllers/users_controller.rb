@@ -17,7 +17,8 @@ before_action :set_users, only: [:profile]
 
   def profile
       #user profile
-      @posts = @user.posts.order("created_at DESC") if @posts.present?
+      @posts = @user.posts.order("created_at DESC") 
+      
       
 
       
@@ -34,7 +35,7 @@ before_action :set_users, only: [:profile]
 
   
   def user_params
-    params.require(:user).permit(:username, :password, :avatar) if params[:avatar].present?
+    params.require(:user).permit(:username, :password, :avatar)
   end
 
   
