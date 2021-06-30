@@ -3,6 +3,9 @@
     <div class="relative py-3 sm:max-w-xl sm:mx-auto">
         <div class="bg-white border rounded-sm max-w-md">
                 <div class="flex items-center px-4 py-3">
+                    <% if @post.user.avatar.attached? %>
+                        <%= image_tag(@post.user.avatar_thumbnail,class:"rounded-full h-10 w-10 items-center justify-center")  %>
+                    <% end %>
                     <strong><%= link_to @post.user.username, profile_path(@post.user.username) %></strong>
                 </div>
                     <p>
