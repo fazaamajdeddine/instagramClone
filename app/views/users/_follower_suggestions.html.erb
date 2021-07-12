@@ -1,0 +1,10 @@
+<% @users.each do |user| %>
+    <div class="user-item flex flex-row pl-2">
+        <%= image_tag(user.avatar_thumbnail, class:"user-img h-10 w-10 border rounded-full overflow-hidden mr-4") %>
+        <div class="user-name flex flex-col ">
+            <span class="text-sm font-semibold"><%= link_to user.username, profile_path(user.username)%></span>
+            <span class="text-xs -mt-1 text-gray-700"><%= user.full_name %></span>
+        </div>
+    </div>
+    <a href="" class="follow text-blue-600 text-sm font-semibold"><%= button_to "Follow", follows_path(user_id: @user.id) %></a>
+<% end %>

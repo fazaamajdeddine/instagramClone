@@ -62,12 +62,8 @@
     <% end %>
 
     <% end %>
-    <div class="digg_pagination">
-        <ul class="flex pl-0 list-none rounded my-2 items-center justify-center">
-            <li class="relative block py-2 px-3 leading-tight bg-white border border-gray-300 text-blue-700 border-r-0 ml-0 rounded-l hover:bg-gray-200">
-                <%= will_paginate @posts %>
-            </li>
-        </ul>
+    <div >
+        <%= will_paginate @posts %>
     </div>
 </div>
 

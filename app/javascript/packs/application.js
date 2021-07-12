@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
 import "stylesheets/application"
+import "packs/hello_coffee"
 
 Rails.start()
 Turbolinks.start()
