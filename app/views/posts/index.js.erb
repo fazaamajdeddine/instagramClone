@@ -1,0 +1,2 @@
+$('#posts-show').append('<%= j render "posts" %>');
+$('.pagination').replaceWith('<%= j will_paginate(@posts) %>');
